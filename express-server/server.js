@@ -13,8 +13,6 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.json());
 
-app.use(cookieParser());
-
 app.get("/", function (req, res) {
   res.status(200).send("<h1>Hello world</h1>");
 });
