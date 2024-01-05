@@ -14,7 +14,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="dashboard" element={<Dashboard />} />
-      <Route path="protected" element={<PrivateRoute><Protected /></PrivateRoute>} />
+      <Route path="protected" element={<PrivateRoute unauthorizedMessage='Please authenticate to access this page'><Protected /></PrivateRoute>} />
     </Route>
   )
 )

@@ -1,6 +1,7 @@
-import HankoProfile from "../components/HankoProfile"
+import HankoProfile from "../components/HankoProfile";
 import LogoutBtn from '../components/LogoutBtn';
 import { useNavigate } from "react-router-dom";
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -9,10 +10,10 @@ const Dashboard = () => {
       <HankoProfile />
       <div>
         <LogoutBtn />
-        <button style={{marginLeft: "10px"}} onClick={() => navigate("/protected")}>Access the protected page</button>
+        <button style={{ marginLeft: "10px" }} onClick={() => navigate("/protected")}>Access the protected page</button>
       </div>
     </>
   )
 }
 
-export default Dashboard
+export default Dashboard;
