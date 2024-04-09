@@ -1,6 +1,6 @@
 # Hanko React-Express Starter
 
-This repo demonstrates how to integrate Hanko with React-Express application for authentication and user management.
+This repo demonstrates how to integrate Hanko with React application for authentication and user management. It includes an Express.js backend for JWT verification and middleware for securing pages under authentication.
 
 Hanko is an open-source authentication and user management solution with a focus on moving the login beyond passwords while being 100% deployable today.
 
