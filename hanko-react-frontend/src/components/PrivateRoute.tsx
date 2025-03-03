@@ -1,41 +1,38 @@
 import { ReactNode, useEffect, useState } from 'react';
-// import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 interface PrivateRouteProps {
-  children: ReactNode;
-  unauthorizedMessage: string;
-}
-
-function PrivateRoute({ children, unauthorizedMessage }: PrivateRouteProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  // const location = useLocation();
-
-  useEffect(() => {
-    fetch('http://localhost:5001/api/protected', {
-      credentials: 'include', // This is required to include the cookie in the request
-    })
-      .then((res) => {
-        setIsAuthenticated(res.ok);
-      })
-      .catch(() => {
-        setIsAuthenticated(false);
-      });
-  }, []);
-
-  if (isAuthenticated === null) {
-    return null; // Or a loading spinner
+    children: ReactNode;
   }
 
-  return isAuthenticated ? (
-    <>{children}</>
-  ) : (
-    <>
-    <div>{unauthorizedMessage}</div>
 
-    {/* Or redirect to login */}
-    {/* <Navigate to="/login" replace state={{ from: location }} /> */}
-    </>
-  );
-}
+function PrivateRoute({ children }: PrivateRouteProps) {
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+    const location = useLocation();
+  
+    useEffect(() => {
+      fetch('http://localhost:5001/validate', {
+        credentials: 'include', // This is required to include the cookie in the request
+      })
+        .then((res) => {
+          setIsAuthenticated(res.ok);
+        })
+        .catch(() => {
+          setIsAuthenticated(false);
+        });
+    }, []);
+  
+    if (isAuthenticated === null) {
+      return null; // Or a loading spinner
+    }
+  
 
-export default PrivateRoute;
+    if(isAuthenticated){
+        return <>{children}</>
+    }
+    else{
+        return <Navigate to="/" replace state={{ from: location }} />
+    }
+  }
+  
+  export default PrivateRoute;

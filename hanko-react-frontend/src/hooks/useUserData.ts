@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { Hanko } from "@teamhanko/hanko-elements";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL;
@@ -11,13 +11,15 @@ interface HankoUser {
 }
 
 export function useUserData(): HankoUser {
-  const hanko = useMemo(() => new Hanko(hankoApi), []);
+  const [hanko, setHanko] = useState<Hanko>();
   const [userState, setUserState] = useState<HankoUser>({
     id: "",
     email: "",
     loading: true,
     error: null,
   });
+
+  useEffect(() => setHanko(new Hanko(hankoApi)), []);
 
   useEffect(() => {
     hanko?.user
