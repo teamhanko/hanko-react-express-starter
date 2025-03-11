@@ -1,5 +1,3 @@
-const dotenv = require("dotenv").config();
-
 const hankoApiUrl = process.env.HANKO_API_URL || '';
 
 async function validateToken(req, res, next) {
