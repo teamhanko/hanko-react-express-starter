@@ -5,7 +5,6 @@ interface PrivateRouteProps {
     children: ReactNode;
   }
 
-
 function PrivateRoute({ children }: PrivateRouteProps) {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
     const location = useLocation();
@@ -25,7 +24,6 @@ function PrivateRoute({ children }: PrivateRouteProps) {
     if (isAuthenticated === null) {
       return null; // Or a loading spinner
     }
-  
 
     if(isAuthenticated){
         return <>{children}</>

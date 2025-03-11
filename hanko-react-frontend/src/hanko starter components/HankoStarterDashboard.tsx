@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import './hanko-starter-style.css'
 
 import { useUserData } from '../hooks/useUserData';

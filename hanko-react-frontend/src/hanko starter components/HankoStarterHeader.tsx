@@ -21,7 +21,7 @@ const HankoStarterHeader = () => {
 
   if(location.pathname.includes('profile')){
     menu = 
-    <button onClick={() => navigate('/dashboard')}>dashboard</button>
+    <button onClick={() => navigate('/dashboard')}>Dashboard</button>
   }
 
   
