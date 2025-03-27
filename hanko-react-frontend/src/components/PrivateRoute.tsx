@@ -1,16 +1,12 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-interface PrivateRouteProps {
-    children: ReactNode;
-  }
-
-function PrivateRoute({ children }: PrivateRouteProps) {
+export default function PrivateRoute({ children }: { children: ReactNode }) {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
     const location = useLocation();
   
     useEffect(() => {
-      fetch('http://localhost:5001/validate', {
+      fetch('http://localhost:5001/validate', {// Change this to the validation url of your running backend
         credentials: 'include', // This is required to include the cookie in the request
       })
         .then((res) => {
@@ -25,12 +21,8 @@ function PrivateRoute({ children }: PrivateRouteProps) {
       return null; // Or a loading spinner
     }
 
-    if(isAuthenticated){
-        return <>{children}</>
-    }
-    else{
-        return <Navigate to="/" replace state={{ from: location }} />
-    }
+    if(isAuthenticated){ return <>{children}</> }
+
+    //Url to naviage user to if they arent authenticated
+    return <Navigate to="/" replace state={{ from: location }} />
   }
-  
-  export default PrivateRoute;

@@ -17,12 +17,10 @@ async function validateToken(req, res, next) {
 
     let authError = false; 
 
-    const validationOptions = {
-        method: 'GET',
-        headers: {
-            'Cookie': `hanko=${token}` // If using cookie
-            // 'Authorization': `Bearer ${token}` // If using bearer header
-        }
+    const validationOptions = { 
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: `{"session_token":"${cookieToken}"}`
     }
 
     const validationResponse = await fetch(hankoApiUrl + '/sessions/validate', validationOptions); 

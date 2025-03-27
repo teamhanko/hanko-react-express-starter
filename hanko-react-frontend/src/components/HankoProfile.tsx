@@ -9,6 +9,7 @@ export default function HankoProfile() {
   useEffect(() => {
     register(hankoApi).catch((error) => {
       // handle error
+      console.log(error)
     });
   }, []);
 
