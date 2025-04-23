@@ -20,7 +20,7 @@ async function validateToken(req, res, next) {
     const validationOptions = { 
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: `{"session_token":"${cookieToken}"}`
+        body: `{"session_token":"${token}"}`
     }
 
     const validationResponse = await fetch(hankoApiUrl + '/sessions/validate', validationOptions); 
