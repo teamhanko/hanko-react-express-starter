@@ -16,7 +16,7 @@ function LogoutBtn() {
 
   const logout = async () => {
     try {
-      await hanko?.user.logout();
+      await hanko?.logout();
       
       navigate("/"); //Path to naviage to once the user logs out.
 
